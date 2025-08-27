@@ -1,8 +1,8 @@
 <?php
 $result = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $a = $_POST['a'];
-    $t = $_POST['t'];
+    $a = $_GET['a'];
+    $t = $_GET['t'];
     if (is_numeric($a) && is_numeric($t)) {
         $luas = 0.5 * $a * $t;
         $result = "Jadi luas segitiga dengan alas $a dan tinggi $t adalah <b>$luas</b>";
