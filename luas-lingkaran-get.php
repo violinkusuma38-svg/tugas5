@@ -1,7 +1,7 @@
 <?php
 $result = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $r = $_POST['r'];
+    $r = $_GET['r'];
     if (is_numeric($r)) {
         $luas = pi() * pow($r, 2);
         $result = "Jadi luas lingkaran dengan jari-jari $r adalah <b>$luas</b>";
