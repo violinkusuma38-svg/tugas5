@@ -3,8 +3,14 @@ $result = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $r = $_GET['r'];
     if (is_numeric($r)) {
-        $luas = pi() * pow($r, 2);
-        $result = "Jadi luas lingkaran dengan jari-jari $r adalah <b>$luas</b>";
+        $rumus = "L = π × r²";
+        $hitung = "L = π × $r² = " . round(pi() * pow($r, 2), 2);
+        $luas = round(pi() * pow($r, 2), 2);
+        $result = "
+            <p><b>Rumus:</b> $rumus</p>
+            <p><b>Perhitungan:</b> L = π × ($r × $r) = $luas</p>
+            <p><b>Jadi luas lingkaran dengan jari-jari $r adalah $luas</b></p>
+        ";
     } else {
         $result = "Masukkan angka yang valid!";
     }
@@ -16,41 +22,53 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <title>Rumus Luas Lingkaran</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f5e6d3; /* coklat muda */
             padding: 40px;
-            color: #333;
+            color: #3e2f1c;
         }
-        h2 { color: #2c3e50; }
+        h2 {
+            color: #5a3d2b;
+            text-align: center;
+        }
         form {
-            background: #fff;
+            background: #fffaf3;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(90,61,43,0.3);
+            max-width: 450px;
+            margin: auto;
         }
-        form input[type="number"] {
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
             width: 95%;
             padding: 8px;
-            margin-bottom: 14px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            margin: 10px 0 18px;
+            border: 1px solid #bfa48a;
+            border-radius: 8px;
+            background: #fff;
         }
         button {
-            background-color: #2980b9;
+            background-color: #8b5e34;
             color: white;
             padding: 10px 18px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 15px;
         }
-        button:hover { background-color: #1f6391; }
+        button:hover {
+            background-color: #6e4727;
+        }
         .result {
-            margin-top: 15px;
-            padding: 12px;
-            background: #ecf6ff;
-            border-left: 4px solid #2980b9;
-            border-radius: 6px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff5e6;
+            border-left: 6px solid #8b5e34;
+            border-radius: 10px;
+            line-height: 1.6;
         }
     </style>
 </head>

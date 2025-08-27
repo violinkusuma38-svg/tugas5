@@ -4,8 +4,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $a = $_POST['a'];
     $t = $_POST['t'];
     if (is_numeric($a) && is_numeric($t)) {
+        $rumus = "L = ½ × a × t";
         $luas = 0.5 * $a * $t;
-        $result = "Jadi luas segitiga dengan alas $a dan tinggi $t adalah <b>$luas</b>";
+        $result = "
+            <p><b>Rumus:</b> $rumus</p>
+            <p><b>Perhitungan:</b> L = ½ × $a × $t = $luas</p>
+            <p><b>Jadi luas segitiga dengan alas $a dan tinggi $t adalah $luas</b></p>
+        ";
     } else {
         $result = "Masukkan angka yang valid!";
     }
@@ -16,20 +21,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Rumus Luas Segitiga</title>
     <style>
-        body {font-family: Arial; background:#f9f9f9; padding:40px;}
-        form {background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);max-width:400px;}
-        form input[type="number"]{width:95%;padding:8px;margin-bottom:14px;border:1px solid #ccc;border-radius:6px;}
-        button{background:#2980b9;color:white;padding:10px 18px;border:none;border-radius:6px;cursor:pointer;}
-        button:hover{background:#1f6391;}
-        .result{margin-top:15px;padding:12px;background:#ecf6ff;border-left:4px solid #2980b9;border-radius:6px;}
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f5e6d3; /* coklat muda */
+            padding: 40px;
+            color: #3e2f1c;
+        }
+        h2 {
+            color: #5a3d2b;
+            text-align: center;
+        }
+        form {
+            background: #fffaf3;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(90,61,43,0.3);
+            max-width: 450px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            margin: 10px 0 18px;
+            border: 1px solid #bfa48a;
+            border-radius: 8px;
+            background: #fff;
+        }
+        button {
+            background-color: #8b5e34;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        button:hover {
+            background-color: #6e4727;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff5e6;
+            border-left: 6px solid #8b5e34;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
     <h2>Hitung Luas Segitiga</h2>
     <form method="post">
-        <label>Masukkan alas:</label>
+        <label>Masukkan alas (a):</label>
         <input type="number" step="any" name="a" required>
-        <label>Masukkan tinggi:</label>
+        <label>Masukkan tinggi (t):</label>
         <input type="number" step="any" name="t" required>
         <button type="submit">Hitung</button>
     </form>
